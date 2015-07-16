@@ -2,5 +2,7 @@
     <string name="app_name">TP2</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="signup">Créer un compte</string>
+    <string name="signin">J\'ai déjà un compte</string>
     <string name="action_settings">Settings</string>
 </resources>

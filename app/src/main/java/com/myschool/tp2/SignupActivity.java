@@ -1,5 +1,6 @@
 package com.myschool.tp2;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,16 +10,23 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.SharedPreferences;
+import android.content.Context;
 
 
 public class SignupActivity extends ActionBarActivity {
 
     private Button btn_validation = null;
 
+    SharedPreferences sharedpreferences;
+    SharedPreferences sharedCurrentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+
 
         btn_validation = (Button) findViewById(R.id.btn_signup_send);
         btn_validation.setOnClickListener(signupValidation);
@@ -55,6 +63,8 @@ public class SignupActivity extends ActionBarActivity {
         @Override
         public void onClick(View v) {
 
+            Intent goProfile = new Intent(SignupActivity.this, ProfileActivity.class);
+
             username = (EditText) findViewById(R.id.username);
             email = (EditText) findViewById(R.id.email);
             password = (EditText) findViewById(R.id.password);
@@ -63,9 +73,21 @@ public class SignupActivity extends ActionBarActivity {
             String vEmail = email.getText().toString();
             String vPassword = password.getText().toString();
 
+            String MyPREFERENCES = vEmail ;
+            sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+            sharedCurrentUser = getSharedPreferences("CURRENT_LOGIN", Context.MODE_PRIVATE);
+
             if (vUsername.equals("") || vEmail.equals("") || vPassword.equals("")) {
                 Toast.makeText(SignupActivity.this, "Remplissez tous les champs", Toast.LENGTH_SHORT).show();
                 return;
+            }else {
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                SharedPreferences.Editor editLogin = sharedCurrentUser.edit();
+                editLogin.putString("current_login", vEmail);
+                editor.putString("user_name", vUsername);
+                editor.commit();
+                editLogin.commit();
+                startActivity(goProfile);
             }
 
         }

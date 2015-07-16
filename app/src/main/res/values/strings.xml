@@ -10,4 +10,7 @@
     <string name="input_account_email">Email</string>
     <string name="input_account_password">Password</string>
     <string name="signup_send">Valider</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

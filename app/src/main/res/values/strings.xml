@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">TP2</string>
-
-    <string name="hello_world">Hello world!</string>
+    
     <string name="signup">Créer un compte</string>
     <string name="signin">J\'ai déjà un compte</string>
     <string name="action_settings">Settings</string>
+
+    <string name="title_activity_signup">Créer un compte</string>
+    <string name="input_account_name">Nom</string>
+    <string name="input_account_email">Email</string>
+    <string name="input_account_password">Password</string>
 </resources>
